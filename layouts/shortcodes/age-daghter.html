@@ -1,0 +1,7 @@
+{{ $now := now }}
+{{ $birth := time .Page.Params.birth_date_daughter }}
+{{ $age := sub $now.Year $birth.Year }}
+{{ if or (lt $now.Month $birth.Month) (and (eq $now.Month $birth.Month) (lt $now.Day $birth.Day)) }}
+    {{ $age = sub $age 1 }}
+{{ end }}
+{{ $age }}
